@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # 1. Memantau Library Python (pip)
+  # Ini akan mengecek requirements.txt untuk update pandas, streamlit, dll.
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # (Opsional) Grouping: Menggabungkan semua update library jadi 1 PR
+    # agar tidak spamming banyak PR sekaligus.
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+
+  # 2. Memantau GitHub Actions
+  # Ini mengecek update untuk actions/checkout, actions/setup-python, dll.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
