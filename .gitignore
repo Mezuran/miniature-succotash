@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (PENTING)
+venv/
+env/
+.env
+ENV/
+env.bak/
+venv.bak/
+
+# Distribusi / Packaging
+dist/
+build/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables (File rahasia/API Keys)
+.env
+.flaskenv
