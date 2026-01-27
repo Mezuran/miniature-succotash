@@ -1,4 +1,6 @@
 import ast
+import string
+import random
 
 def get_page_config(file_path):
     try:
@@ -13,3 +15,8 @@ def get_page_config(file_path):
     except Exception:
         pass
     return {}
+
+def generate_random_string(length):
+    # Combines uppercase, lowercase, and numbers
+    chars = string.ascii_letters + string.digits
+    return ''.join(random.choices(chars, k=length))

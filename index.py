@@ -3,7 +3,7 @@ import streamlit as st
 from pathlib import Path
 from libs import Utils
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='centered')
 
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 pages_dir = current_dir / "pages"
