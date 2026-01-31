@@ -13,7 +13,7 @@ jobs:
     
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -52,7 +52,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Install Poetry
         uses: snok/install-poetry@v1
