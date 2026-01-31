@@ -1,7 +1,7 @@
 import streamlit as st
 
 from pathlib import Path
-from libs import utils
+from libs.utils import get_page_config
 
 st.set_page_config(layout='wide')
 
@@ -17,7 +17,7 @@ page_files.sort()
 
 all_pages = []
 for file_path in page_files:
-    config = utils.get_page_config(file_path)
+    config = get_page_config(file_path)
     
     default_title = file_path.stem.replace("_", " ").title()
     title = config.get("title", default_title)
