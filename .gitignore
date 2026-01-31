@@ -5,6 +5,7 @@ __pycache__/
 
 # Virtual Environments (PENTING)
 venv/
+.venv/
 env/
 .env
 ENV/

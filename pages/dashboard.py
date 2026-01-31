@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-# Penting dikasih, setiap page
 PAGE_CONFIG = {"title": "My Dashboard", "icon": ":material/home:"}
 
-# Page body
 st.subheader("SISTEM MATCHMAKING UNTUK GAME KOMPETITIF MENGGUNAKAN ALGORITMA GREEDY")
 st.write("Welcome to the dashboard.")
 
@@ -41,11 +39,10 @@ if st.button("Submit Match"):
         }
         df = pd.DataFrame(player_data)
 
-        # Tampilkan dataframe TANPA index
         st.dataframe(
             df,
-            hide_index=True,  # <--- Ini kuncinya
-            use_container_width=True
+            hide_index=True,
+            width='content'
         )
 
     with col2:
@@ -66,7 +63,7 @@ if st.button("Submit Match"):
         st.dataframe(
             df,
             hide_index=True,  # <--- Ini kuncinya
-            use_container_width=True
+            width='content'
         )
 
 
