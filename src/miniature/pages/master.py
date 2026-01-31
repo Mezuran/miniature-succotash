@@ -2,9 +2,9 @@ import asyncio
 import streamlit as st
 import pandas as pd
 
-from libs.database import Player, Rank
-from libs.connection import connect, get_event_loop
-from libs.utils import generate_random_string
+from miniature.libs.database import Player, Rank
+from miniature.libs.connection import connect, get_event_loop
+from miniature.libs.utils import generate_random_string
 
 PAGE_CONFIG = {"title": "My Master Page", "icon": ":material/data_table:"}
 

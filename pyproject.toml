@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "miniature-succotash"
+version = "0.1.0"
+description = "Tugas Besar Analisis dan Strategi Algoritma. Dedicated to Chrismikha Hardyanto, S.Kom., M.Kom."
+authors = ["Mitho Mizuno <mithomizuno@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "miniature", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = ">=2.2"
+streamlit = "^1.53.1"
+prisma = "^0.15.0"
+
+[tool.poetry.scripts]
+miniature = "miniature.index:run"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
