@@ -44,8 +44,8 @@ def display_team_stats(team_name: str, players: list[PlayerModel]):
     total_mmr = sum(p.rating for p in players)
     avg_mmr = total_mmr / len(players) if players else 0
     
-    st.subheader(f"{team_name}")
-    st.metric(label="Team Power", value=f"{total_mmr:,} MMR", delta=f"Avg: {avg_mmr:.0f}")
+    st.subheader(f":material/groups: {team_name}")
+    st.metric(label=":material/avg_pace: Team Power", value=f"{total_mmr:,} MMR", delta=f"Avg: {avg_mmr:.0f}")
 
     data = []
     for p in players:
