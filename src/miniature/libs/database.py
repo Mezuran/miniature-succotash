@@ -1,12 +1,10 @@
-from typing import Tuple, Union, Optional, List, Unpack
+from typing import Tuple, Union, Optional, List, Unpack, Any
 
 from miniature.prisma.client import Prisma
-from miniature.prisma.models import Rank as RankModel, Player as PlayerModel
-from miniature.prisma.types import RankUpdateInput, PlayerUpdateInput
 
 class Rank:
     @staticmethod
-    async def get_by_mmr(db: Prisma, rating: int) -> Tuple[bool, Union[Exception, Optional[RankModel]]]:
+    async def get_by_mmr(db: Prisma, rating: int) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             rank = await db.rank.find_first(
                 where={'min_rating': {'lte': rating}}, 
@@ -17,7 +15,7 @@ class Rank:
             return False, e
         
     @staticmethod
-    async def get_all(db: Prisma) -> Tuple[bool, Union[Exception, List[RankModel]]]:
+    async def get_all(db: Prisma) -> Tuple[bool, Union[Exception, List[Any]]]:
         try:
             players = await db.rank.find_many()
             return True, players
@@ -25,7 +23,7 @@ class Rank:
             return False, e
 
     @staticmethod
-    async def get_by_name(db: Prisma, value: str) -> Tuple[bool, Union[Exception, Optional[RankModel]]]:
+    async def get_by_name(db: Prisma, value: str) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             rank = await db.rank.find_first(where={'name': value})
             return True, rank
@@ -33,7 +31,7 @@ class Rank:
             return False, e
         
     @staticmethod
-    async def create(db: Prisma, name: str, min_rating: int) -> Tuple[bool, Union[Exception, RankModel]]:
+    async def create(db: Prisma, name: str, min_rating: int) -> Tuple[bool, Union[Exception, Any]]:
         try:
             rank = await db.rank.create(data={'name': name, 'min_rating': min_rating})
             return True, rank
@@ -41,7 +39,7 @@ class Rank:
             return False, e 
 
     @staticmethod
-    async def delete_by_name(db: Prisma, name: str) -> Tuple[bool, Union[Exception, Optional[RankModel]]]:
+    async def delete_by_name(db: Prisma, name: str) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             rank = await db.rank.delete(where={'name': name})
             return True, rank
@@ -49,7 +47,7 @@ class Rank:
             return False, e
 
     @staticmethod
-    async def update_by_name(db: Prisma, name: str, **kwargs: Unpack[RankUpdateInput]) -> Tuple[bool, Union[Exception, Optional[RankModel]]]:
+    async def update_by_name(db: Prisma, name: str, **kwargs: Unpack[Any]) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             rank = await db.rank.update(where={'name': name}, data=kwargs)
             return True, rank
@@ -57,7 +55,7 @@ class Rank:
             return False, e
         
     @staticmethod
-    async def update(db: Prisma, rank_id: int, **kwargs: Unpack[RankUpdateInput]) -> Tuple[bool, Union[Exception, Optional[RankModel]]]:
+    async def update(db: Prisma, rank_id: int, **kwargs: Unpack[Any]) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             rank = await db.rank.update(where={'id': rank_id}, data=kwargs)
             return True, rank
@@ -67,7 +65,7 @@ class Rank:
 
 class Player:
     @staticmethod
-    async def get_all(db: Prisma) -> Tuple[bool, Union[Exception, List[PlayerModel]]]:
+    async def get_all(db: Prisma) -> Tuple[bool, Union[Exception, List[Any]]]:
         try:
             players = await db.player.find_many(include={'rank': True}, order={'rating': 'desc'})
             return True, players
@@ -76,15 +74,15 @@ class Player:
 
         
     @staticmethod
-    async def update_by_name(db: Prisma, name: str, **kwargs: Unpack[PlayerUpdateInput]) -> Tuple[bool, Union[Exception, Optional[PlayerModel]]]:
+    async def update_by_name(db: Prisma, name: str, **kwargs: Unpack[Any]) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             player = await db.player.update(where={'name': name}, data=kwargs)
             return True, player
         except Exception as e:
             return False, e
         
-    @staticmethod
-    async def update(db: Prisma, player_id: int, **kwargs: Unpack[PlayerUpdateInput]) -> Tuple[bool, Union[Exception, Optional[PlayerModel]]]:
+    @staticmethod 
+    async def update(db: Prisma, player_id: int, **kwargs: Unpack[Any]) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             player = await db.player.update(where={'id': player_id}, data=kwargs)
             return True, player
@@ -92,7 +90,7 @@ class Player:
             return False, e
 
     @staticmethod
-    async def get_by_name(db: Prisma, value: str) -> Tuple[bool, Union[Exception, Optional[PlayerModel]]]:
+    async def get_by_name(db: Prisma, value: str) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             player = await db.player.find_first(where={'name': value})
             return True, player
@@ -100,7 +98,7 @@ class Player:
             return False, e
         
     @staticmethod
-    async def delete_by_name(db: Prisma, name: str) -> Tuple[bool, Union[Exception, Optional[PlayerModel]]]:
+    async def delete_by_name(db: Prisma, name: str) -> Tuple[bool, Union[Exception, Optional[Any]]]:
         try:
             success, player = await Player.get_by_name(db, name)
             if not success or not player:
@@ -112,7 +110,7 @@ class Player:
             return False, e
     
     @staticmethod
-    async def create(db: Prisma, name: str, rating: int) -> Tuple[bool, Union[Exception, PlayerModel]]:
+    async def create(db: Prisma, name: str, rating: int) -> Tuple[bool, Union[Exception, Any]]:
         try:
             success, rank = await Rank.get_by_mmr(db, rating)
             
