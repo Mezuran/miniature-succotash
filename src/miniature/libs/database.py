@@ -1,8 +1,8 @@
 from typing import Tuple, Union, Optional, List, Unpack
 
-from miniature.prisma.client import Prisma
-from miniature.prisma.models import Rank as RankModel, Player as PlayerModel
-from miniature.prisma.types import RankUpdateInput, PlayerUpdateInput
+from prisma import Prisma
+from prisma.models import Rank as RankModel, Player as PlayerModel
+from prisma.types import RankUpdateInput, PlayerUpdateInput
 
 class Rank:
     @staticmethod

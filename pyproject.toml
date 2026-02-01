@@ -5,7 +5,9 @@ description = "Tugas Besar Analisis dan Strategi Algoritma. Dedicated to Chrismi
 authors = ["Mitho Mizuno <mithomizuno@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-packages = [{include = "miniature", from = "src"}]
+packages = [
+    {include = "miniature", from = "src"}
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"

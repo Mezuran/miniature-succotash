@@ -1,7 +1,5 @@
 generator client {
   provider             = "prisma-client-py"
-  output               = "./src/miniature/prisma"
-  binaryTargets        = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
   recursive_type_depth = "5"
   interface            = "asyncio"
 }
