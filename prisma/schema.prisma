@@ -1,12 +1,16 @@
 generator client {
   provider             = "prisma-client-py"
   interface            = "asyncio"
+  output        = "../prisma_client" 
+  
+  // 2. Ensure binaries for both your machine and Linux (Streamlit Cloud) are included
+  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x"]
   recursive_type_depth = 5
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./database.db"
 }
 
 model Player {
