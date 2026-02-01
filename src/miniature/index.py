@@ -2,11 +2,19 @@ import subprocess
 import sys
 import streamlit as st
 
-try:
-    subprocess.run([sys.executable, "-m", "prisma", "py", "fetch"], check=True)
-    subprocess.run([sys.executable, "-m", "prisma", "generate"], check=True)
-except subprocess.CalledProcessError as e:
-    print(f"Error generating Prisma Client: {e}")
+@st.cache_resource
+def init_prisma():
+    """Run prisma generate only once."""
+    try:
+        # Only run this if you are NOT on Streamlit Cloud
+        # (You might want to add a check for an environment variable here)
+        subprocess.run([sys.executable, "-m", "prisma", "py", "fetch"], check=True)
+        subprocess.run([sys.executable, "-m", "prisma", "generate"], check=True)
+        print("✅ Prisma Client generated successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error generating Prisma Client: {e}")
+
+init_prisma()
 
 from pathlib import Path
 from miniature.libs.utils import get_page_config
