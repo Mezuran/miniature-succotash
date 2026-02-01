@@ -1,7 +1,7 @@
 import asyncio
 import streamlit as st
 
-from prisma import Prisma
+from miniature.prisma import Prisma
 
 @st.cache_resource
 def get_event_loop():
