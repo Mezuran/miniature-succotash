@@ -1,31 +1,27 @@
 generator client {
   provider             = "prisma-client-py"
-  interface            = "asyncio"
   output               = "./src/miniature/prisma"
   binaryTargets        = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
-  recursive_type_depth = 5
+  recursive_type_depth = "5"
+  interface            = "asyncio"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./database.sqlite"
+  url      = "file:./src/miniature/database.sqlite"
 }
 
 model Player {
-  id     Int    @id @default(autoincrement())
-  name   String
-  rating Int    @default(0)
-
-  // Relation to rank
-  rank    Rank? @relation(fields: [rank_id], references: [id])
+  id      Int    @id @default(autoincrement())
+  name    String
+  rating  Int    @default(0)
   rank_id Int?
+  rank    Rank?  @relation(fields: [rank_id], references: [id])
 }
 
 model Rank {
-  id         Int    @id @default(autoincrement())
-  name       String @unique
-  min_rating Int    @unique
-
-  // Players yang memiliki relasi ke rank tsb.
-  players Player[]
+  id         Int      @id @default(autoincrement())
+  name       String   @unique
+  min_rating Int      @unique
+  players    Player[]
 }

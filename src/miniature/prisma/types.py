@@ -1136,8 +1136,8 @@ class PlayerOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the Player create method"""
     id: _int
     rating: _int
-    rank: 'RankCreateNestedWithoutRelationsInput'
     rank_id: Optional[_int]
+    rank: 'RankCreateNestedWithoutRelationsInput'
 
 
 class PlayerCreateInput(PlayerOptionalCreateInput):
@@ -1525,8 +1525,8 @@ class PlayerWhereInput(TypedDict, total=False):
     id: Union[_int, 'types.IntFilter']
     name: Union[_str, 'types.StringFilter']
     rating: Union[_int, 'types.IntFilter']
-    rank: 'RankRelationFilter'
     rank_id: Union[None, _int, 'types.IntFilter']
+    rank: 'RankRelationFilter'
 
     # should be noted that AND and NOT should be Union['PlayerWhereInputRecursive1', List['PlayerWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -1540,8 +1540,8 @@ class PlayerWhereInputRecursive1(TypedDict, total=False):
     id: Union[_int, 'types.IntFilter']
     name: Union[_str, 'types.StringFilter']
     rating: Union[_int, 'types.IntFilter']
-    rank: 'RankRelationFilter'
     rank_id: Union[None, _int, 'types.IntFilter']
+    rank: 'RankRelationFilter'
 
     # should be noted that AND and NOT should be Union['PlayerWhereInputRecursive2', List['PlayerWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -1555,8 +1555,8 @@ class PlayerWhereInputRecursive2(TypedDict, total=False):
     id: Union[_int, 'types.IntFilter']
     name: Union[_str, 'types.StringFilter']
     rating: Union[_int, 'types.IntFilter']
-    rank: 'RankRelationFilter'
     rank_id: Union[None, _int, 'types.IntFilter']
+    rank: 'RankRelationFilter'
 
     # should be noted that AND and NOT should be Union['PlayerWhereInputRecursive3', List['PlayerWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -1570,8 +1570,8 @@ class PlayerWhereInputRecursive3(TypedDict, total=False):
     id: Union[_int, 'types.IntFilter']
     name: Union[_str, 'types.StringFilter']
     rating: Union[_int, 'types.IntFilter']
-    rank: 'RankRelationFilter'
     rank_id: Union[None, _int, 'types.IntFilter']
+    rank: 'RankRelationFilter'
 
     # should be noted that AND and NOT should be Union['PlayerWhereInputRecursive4', List['PlayerWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -1585,8 +1585,8 @@ class PlayerWhereInputRecursive4(TypedDict, total=False):
     id: Union[_int, 'types.IntFilter']
     name: Union[_str, 'types.StringFilter']
     rating: Union[_int, 'types.IntFilter']
-    rank: 'RankRelationFilter'
     rank_id: Union[None, _int, 'types.IntFilter']
+    rank: 'RankRelationFilter'
 
 
 
@@ -1746,8 +1746,8 @@ PlayerKeys = Literal[
     'id',
     'name',
     'rating',
-    'rank',
     'rank_id',
+    'rank',
 ]
 PlayerScalarFieldKeys = Literal[
     'id',

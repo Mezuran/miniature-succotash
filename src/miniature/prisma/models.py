@@ -62,8 +62,8 @@ class Player(bases.BasePlayer):
     id: _int
     name: _str
     rating: _int
-    rank: Optional['models.Rank'] = None
     rank_id: Optional[_int] = None
+    rank: Optional['models.Rank'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -349,20 +349,20 @@ _Player_fields: Dict['types.PlayerKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('rank', {
-            'name': 'rank',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.Rank',
-            'is_relational': True,
-            'documentation': None,
-        }),
         ('rank_id', {
             'name': 'rank_id',
             'is_list': False,
             'optional': True,
             'type': '_int',
             'is_relational': False,
+            'documentation': None,
+        }),
+        ('rank', {
+            'name': 'rank',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.Rank',
+            'is_relational': True,
             'documentation': None,
         }),
     ],

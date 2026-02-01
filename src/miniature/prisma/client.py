@@ -141,7 +141,7 @@ class Prisma(AsyncBasePrisma):
     def _default_datasource(self) -> Datasource:
         return {
             'name': 'db',
-            'url': OptionalValueFromEnvVar(**{'value': 'file:./database.sqlite', 'fromEnvVar': None}).resolve(),
+            'url': OptionalValueFromEnvVar(**{'value': 'file:./src/miniature/database.sqlite', 'fromEnvVar': None}).resolve(),
             'source_file_path': 'C:/Users/Mitho/OneDrive/Documents/Khaizuran Rafie Athmarullah/ANALGO/miniature-succotash/schema.prisma',
         }
 
