@@ -2,15 +2,13 @@ import subprocess
 import sys
 import streamlit as st
 
+try:
+    subprocess.run([sys.executable, "-m", "prisma", "generate"], check=True)
+except subprocess.CalledProcessError as e:
+    print(f"Error generating Prisma Client: {e}")
+
 from pathlib import Path
 from miniature.libs.utils import get_page_config
-
-try:
-    from prisma import Prisma
-except RuntimeError:
-    print("Prisma Client not found. Generating...")
-    subprocess.run([sys.executable, "-m", "prisma", "generate"], check=True)
-    print("Prisma Client generated successfully.")
 
 st.set_page_config(layout='wide')
 
