@@ -10,9 +10,9 @@ def init_prisma():
         # (You might want to add a check for an environment variable here)
         subprocess.run([sys.executable, "-m", "prisma", "py", "fetch"], check=True)
         subprocess.run([sys.executable, "-m", "prisma", "generate"], check=True)
-        print("✅ Prisma Client generated successfully.")
+        print("Prisma Client generated successfully.")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error generating Prisma Client: {e}")
+        print(f"Error generating Prisma Client: {e}")
 
 init_prisma()
 
